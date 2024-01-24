@@ -1,6 +1,11 @@
 # Git-Cheatsheet
 
-### git configuracion
+### Comandos generales
+- mkdir directorio	(crear directorio)
+- cd directorio		(mover a un directorio)
+- ls			(listar archivos en un directorio)
+
+### Git configuracion
 
 *--global indica que es para todos los repositorios en la computador
 - git --version					(saber versión instalada)
@@ -9,6 +14,7 @@
 - git config --global -e				(editar config)
 - git config --global init.defaultBranch main	(cambiar el nombre de la rama por default a main)
 - git config core.autocrlf true			(para omitir mensaje de warn con caracter CRLF)
+- git config --global pull.rebase true 	 (define por default que el pull sea de tipo rebase)
 
 **Alias**
 - git config --global alias.s “status -sb” 	(para generar alias de status)
@@ -59,7 +65,7 @@
 - git branch -d nombreRama		(eliminar rama si ya se hizo merge)
 - git branch -D nombreRama		(eliminar rama incluso si no se hizo merge)
 
-- git merge nombreRama		(une rama actual con la rama indicada (trae los cambios))
+- git merge nombreRama		(une rama actual con la rama indicada y crea un nuevo commit)
 
   - Sin conflictos se llama fast-forward
   - Con conflictos entra a un estado de resolucion, luego de corregir usar git add
@@ -73,7 +79,7 @@
 
 - git reflog			(muestra todos los movimientos hechos en un repo)
 
-- git rebase nombreRama		(une rama indicada con la rama actual organizando los commits)
+- git rebase nombreRama		(une rama indicada con la rama actual pero mueve los commits de la rama actual adelante del ultimo commit de la rama indicada)
 - git rebase -i HEAD~indice		(permite realizar acciones sobre los commits anteriores (indice))
 
 **Trabajo con tags**
@@ -91,12 +97,12 @@
 - git stash save “mensaje”			(guarda el stash con ese mensaje)
 - git stash clear					(limpia todos los stash)
 
-**git para GitHub (remoto)**
+### Git para remoto (GitHub)
 
 - git remote add origin urlGithub 	(vincular a github)
-- git push -u origin nombreRama	(publicar en rama remota y la define como default para el trabajo remoto)
+- git push -u origin nombreRama	(publicar en rama remota y relaciona la rama remota con la rama actua para el trabajo remoto(push, pull, etc.))
 - git push origin nombreRama		(publicar en rama remota (la crea si no existe))
-- git fetch origin				(trae todos los cambios remotos al repositorio local)
+- git fetch origin				(trae todos los cambios remotos (referencias) al repositorio local)
 - git pull origin nombreRama		(traer cambios de rama remota)
   - pull es la combinacion de 2 comandos fetch y merge
 - git push origin branch --tags		(push tags)
