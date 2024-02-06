@@ -108,3 +108,4 @@
 - git push origin branch --tags		(push tags)
 - git clone urlGithub nombreCarpeta	(clonar repo remoto a local)
 - git remote remove origin		(eliminar enlace remoto)
+- git remote prune origin   (eliminar ramas remotas)
